@@ -1,0 +1,18 @@
+/* The settings screen: the keys and what they do, in the player's colour theme. */
+
+.settings {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 620px;
+    height: 300px;
+    background-color: var(--panel);
+    border: 1.4px var(--accent);
+}
+
+.settings .rule { position: absolute; background-color: var(--muted); }
+
+.title { color: var(--title); }
+.muted { color: var(--muted); }
+.accent { color: var(--accent); }
+.hint { color: var(--hint); }

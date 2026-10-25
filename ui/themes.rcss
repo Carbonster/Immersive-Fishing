@@ -1,0 +1,112 @@
+/* The four colour themes, as variables; body gets theme-<name> from the `theme` value. */
+
+/* Until the mod says which: Blue. */
+body {
+    --accent: #96b4d7;
+    --muted: #7896b9;
+    --title: #ebf2ff;
+    --hint: #dcebff;
+    --column: #0a101ca0;
+    --chip: #1e2a3ea0;
+    --panel: #080d16f2;
+    --fish: #f0f5ff;
+    --fishEdge: #78a0d2;
+    --barFill: #78a5d746;
+    --barEdge: #8cb4e1aa;
+    --progress: #78afe6;
+    --inGlow: #5ad28228;
+    --inBarFill: #5ad2825f;
+    --inBarEdge: #78eb96dc;
+    --inFishEdge: #78eb96;
+    --inProgress: #6ed78c;
+    --padHot: #78e68c;
+    --padHotEdge: #aaffbe;
+}
+
+body.theme-Blue {
+    --accent: #96b4d7;
+    --muted: #7896b9;
+    --title: #ebf2ff;
+    --hint: #dcebff;
+    --column: #0a101ca0;
+    --chip: #1e2a3ea0;
+    --panel: #080d16f2;
+    --fish: #f0f5ff;
+    --fishEdge: #78a0d2;
+    --barFill: #78a5d746;
+    --barEdge: #8cb4e1aa;
+    --progress: #78afe6;
+    --inGlow: #5ad28228;
+    --inBarFill: #5ad2825f;
+    --inBarEdge: #78eb96dc;
+    --inFishEdge: #78eb96;
+    --inProgress: #6ed78c;
+    --padHot: #78e68c;
+    --padHotEdge: #aaffbe;
+}
+
+body.theme-Sand {
+    --accent: #d7b496;
+    --muted: #b99678;
+    --title: #fff6eb;
+    --hint: #ffeed7;
+    --column: #1c140ca5;
+    --chip: #3c2e1ea0;
+    --panel: #140d06f2;
+    --fish: #fff8ee;
+    --fishEdge: #d2af8c;
+    --barFill: #d7af7846;
+    --barEdge: #e1b98caa;
+    --progress: #e6be82;
+    --inGlow: #78d26e28;
+    --inBarFill: #78d26e5f;
+    --inBarEdge: #96eb78dc;
+    --inFishEdge: #96eb78;
+    --inProgress: #8cd76e;
+    --padHot: #96e678;
+    --padHotEdge: #beff96;
+}
+
+body.theme-HighContrast {
+    --accent: #ffee00;
+    --muted: #ffffff;
+    --title: #ffffff;
+    --hint: #ffffff;
+    --column: #000000eb;
+    --chip: #000000eb;
+    --panel: #000000f7;
+    --fish: #ffffff;
+    --fishEdge: #ffffff;
+    --barFill: #ffee0078;
+    --barEdge: #ffee00;
+    --progress: #ffee00;
+    --inGlow: #00ff5a50;
+    --inBarFill: #00ff5a96;
+    --inBarEdge: #00ff5a;
+    --inFishEdge: #00ff5a;
+    --inProgress: #00ff5a;
+    --padHot: #00ff5a;
+    --padHotEdge: #beffbe;
+}
+
+body.theme-Colorblind {
+    --accent: #78aaeb;
+    --muted: #8ca0be;
+    --title: #f5f5f5;
+    --hint: #e6ebf5;
+    --column: #0c101aaf;
+    --chip: #20283aaa;
+    --panel: #090c14f2;
+    --fish: #f5f5f5;
+    --fishEdge: #78a0dc;
+    --barFill: #6ea0e146;
+    --barEdge: #8cb4ebaa;
+    --progress: #78aaeb;
+    --inGlow: #f096003c;
+    --inBarFill: #f096006e;
+    --inBarEdge: #ffb428eb;
+    --inFishEdge: #ffb428;
+    --inProgress: #f5a014;
+    --padHot: #f5a014;
+    --padHotEdge: #ffcd78;
+}

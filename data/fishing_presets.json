@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "physics_presets": {
+    "LEGACY": {
+      "bar_accel_up": 2.4,
+      "bar_gravity": 1.9,
+      "bar_damping": 0.9,
+      "in_bar_gravity_mult": 1.0,
+      "edge_bounce": 0.0,
+      "start_progress": 0.45,
+      "grow_override": 0.3,
+      "decay_override": 0.24,
+      "barH_override": 0.26
+    },
+    "DEFAULT": {
+      "bar_accel_up": 1.585,
+      "bar_gravity": 1.585,
+      "bar_damping": 1.0,
+      "in_bar_gravity_mult": 0.6,
+      "edge_bounce": 0.6666666667,
+      "start_progress": 0.3,
+      "grow_override": 0.12,
+      "decay_override": 0.18,
+      "barH_override": 0.17
+    }
+  },
+  "difficulty_presets": {
+    "preset_1": {
+      "diff_scale": 1.0,
+      "top_tier_scale": 1.0,
+      "grow_mult": 1.0,
+      "decay_mult": 1.0,
+      "barH": null,
+      "motion_mode": "size"
+    },
+    "preset_2": {
+      "diff_scale": 0.5,
+      "top_tier_scale": 1.0,
+      "grow_mult": 1.1,
+      "decay_mult": 0.9,
+      "barH": 0.19,
+      "motion_mode": "size"
+    },
+    "preset_3": {
+      "diff_scale": 0.5,
+      "top_tier_scale": 1.0,
+      "grow_mult": 1.2,
+      "decay_mult": 0.8,
+      "barH": 0.19,
+      "motion_mode": "rarity"
+    },
+    "preset_4": {
+      "diff_scale": 0.65,
+      "top_tier_scale": 1.0,
+      "grow_mult": 1.0,
+      "decay_mult": 1.0,
+      "barH": 0.19,
+      "motion_mode": "rarity"
+    },
+    "preset_5": {
+      "diff_scale": 0.715,
+      "top_tier_scale": 1.0,
+      "grow_mult": 0.9,
+      "decay_mult": 0.9,
+      "barH": 0.19,
+      "motion_mode": "rarity"
+    },
+    "preset_6": {
+      "diff_scale": 0.715,
+      "low_diff_target": 45.0,
+      "low_diff_pull": 0.3,
+      "top_tier_scale": 1.0,
+      "grow_mult": 0.81,
+      "decay_mult": 0.81,
+      "barH": 0.17,
+      "motion_mode": "rarity"
+    }
+  }
+}

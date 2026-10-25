@@ -1,0 +1,15 @@
+/build/
+**/build/
+**/.vs/
+**/__pycache__/
+*.py[cod]
+*.obj
+*.pdb
+*.ilk
+
+# Local diagnostics
+logs/*.log
+logs/previous/
+
+# Release artifacts
+*.zip

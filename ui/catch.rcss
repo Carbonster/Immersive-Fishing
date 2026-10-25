@@ -1,0 +1,214 @@
+/* The catch panel, after the v11 design: drawn on the helmet visor, no panel behind it.
+   Pinned to a side of the screen by the mod; everything inside is the design's own layout. */
+
+.panel {
+    --label-font: Jost;
+    position: absolute;
+    top: 50%;
+    width: 540px;
+    height: 720px;
+    box-sizing: border-box;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    color: #ffffff;
+    font-family: Roboto;
+    line-height: 1.172;          /* "normal" for Roboto */
+    font-effect: glow(0px 3px 0px 0px #00000099);
+    filter: visor();
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 12px;
+    height: 540px;
+}
+
+/* ---- scale ---- */
+
+.ticks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px 0;
+    width: 20px;
+    height: 540px;
+    box-sizing: border-box;
+}
+.tick { width: 9px; height: 2px; background-color: #ffffff4d; }
+.tick.major { width: 18px; background-color: #ffffff99; }
+
+/* ---- track: black 62% at the ends, 42% in the middle, chamfered 8px (an SVG in the RML) ---- */
+
+.track {
+    position: relative;
+    width: 104px;
+    height: 540px;
+}
+.track-fill { position: absolute; left: 0; top: 0; }
+
+/* The puck runs the track's whole height and is cut to its chamfered ends. */
+.puck-clip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 104px;
+    height: 540px;
+    mask-image: svg("track-mask.svg");
+}
+
+.puck {
+    position: absolute;
+    left: 0;
+    width: 104px;
+    background-color: #6eebf073;
+}
+.puck-edge { position: absolute; left: 0; top: 50%; margin-top: -7px; }
+.puck-edge.right { left: 95px; }
+
+/* ---- success ---- */
+
+.success {
+    position: relative;
+    width: 10px;
+    height: 540px;
+    margin-left: 4px;
+    background-color: #ffffff26;
+}
+.success-fill {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 10px;
+    background-color: #6eebf0;
+}
+
+/* ---- the column of text ---- */
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 540px;
+    padding-left: 18px;
+    flex-grow: 1;
+}
+.info-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+.info-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.kicker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffffc7;
+    font-family: var(--label-font);
+    font-weight: 500;            /* the design's 400 reads too thin on the visor */
+    font-size: 12px;
+    line-height: 1.445;          /* "normal" for Jost */
+    letter-spacing: 3px;         /* 0.24em */
+}
+.slashes {
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.172;
+    letter-spacing: -2px;        /* -0.12em */
+}
+
+.name {
+    font-size: 27px;
+    line-height: 1.1;
+}
+
+.rarity {
+    padding: 2px 10px;
+    border-radius: 9px;
+    background-color: #c9ced3;
+    color: #0e080f;
+    font-family: var(--label-font);
+    font-size: 10px;             /* 10.4px */
+    line-height: 1.445;
+    letter-spacing: 2px;         /* 0.18em */
+    font-effect: none;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+.stat-label {
+    font-family: var(--label-font);
+    font-weight: 500;            /* the design's 400 reads too thin on the visor */
+    font-size: 10px;             /* 9.6px */
+    line-height: 1.445;
+    letter-spacing: 2px;         /* 0.22em */
+    color: #ffffffb3;
+}
+.stat-value { font-size: 19px; }
+.difficulty { color: #f5c542; }
+
+.divider { width: 96px; height: 2px; background-color: #ffffff80; }
+
+/* ---- hint ---- */
+
+.hint-row {
+    display: flex;
+    width: 128px;
+    margin-left: 20px;
+    height: 40px;
+}
+.hint {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 151px;
+    height: 34px;
+    /* The design centres the 151px pill in its 128px row; a browser lets it overflow both
+       sides, RmlUi only the right, so the overhang is put back by hand. */
+    margin-left: -11.5px;
+    box-sizing: border-box;
+    padding: 0 8px;
+    border-radius: 17px;
+    background-color: #050605b8;
+    font-family: var(--label-font);
+    font-size: 11px;             /* 10.6px */
+    line-height: 1.445;
+    letter-spacing: 1px;         /* 0.14em */
+    white-space: nowrap;
+}
+
+.pad-icon, .space-icon { flex-shrink: 0; }
+
+/* ---- over everything ---- */
+
+.fish {
+    position: absolute;
+    left: 86px;
+    width: 44px;
+    height: 44px;
+}
+
+.frame {
+    position: absolute;
+    left: 44px;
+    top: 18px;
+}

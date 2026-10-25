@@ -1,0 +1,12 @@
+{
+  "_comment": "Read by Project Oreo Launcher to decide whether an update is available. Update this file as part of publishing a release - see docs/RELEASING.md. The zip must contain a folder named fishing_mod; that is what the launcher puts into GAMEDATA\\MODS.",
+  "schema_version": 1,
+  "version": "0.6.0",
+  "asset": {
+    "file": "FishingMinigameMod-0.6.0.zip",
+    "url": "https://github.com/Carbonster/Immersive-Fishing/releases/download/v0.6.0/FishingMinigameMod-0.6.0.zip",
+    "size": 1577007,
+    "sha256": "38513660cfa4b0127a3ff5d360acbc203b51ff0036414d32e84ee1688434fc90"
+  },
+  "notes_url": "https://github.com/Carbonster/Immersive-Fishing/releases/tag/v0.6.0"
+}

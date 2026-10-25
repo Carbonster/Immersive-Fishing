@@ -1,0 +1,32 @@
+<rml>
+<head>
+    <title>Fishing: settings</title>
+    <link type="text/rcss" href="fishing.rcss"/>
+    <link type="text/rcss" href="themes.rcss"/>
+    <link type="text/rcss" href="settings.rcss"/>
+</head>
+<body data-model="fishing" data-class-theme-Blue="theme == 'Blue'" data-class-theme-Sand="theme == 'Sand'" data-class-theme-HighContrast="theme == 'HighContrast'" data-class-theme-Colorblind="theme == 'Colorblind'">
+    <div class="settings">
+        <div class="text title" style="left: 31.0px; top: 21.15px; font-size: 22px; line-height: 26px">FISHING MINIGAME</div>
+        <div class="text muted" style="left: 31.0px; top: 54.06px; font-size: 12px; line-height: 14px">PROJECT OREO RUNTIME</div>
+        <div class="rule" style="left: 31.0px; top: 77.05px; width: 558.0px; height: 1px"/>
+        <div class="text accent" style="left: 31.0px; top: 89.31px; font-size: 14px; line-height: 16px">KEYS</div>
+        <div class="text hint" style="left: 43.4px; top: 115.14px; font-size: 12px; line-height: 14px">{{ keyMoveLeft }}</div>
+        <div class="text muted" style="left: 148.8px; top: 115.14px; font-size: 12px; line-height: 14px">MOVE THE PANEL LEFT</div>
+        <div class="text hint" style="left: 43.4px; top: 138.66px; font-size: 12px; line-height: 14px">{{ keyMoveRight }}</div>
+        <div class="text muted" style="left: 148.8px; top: 138.66px; font-size: 12px; line-height: 14px">MOVE THE PANEL RIGHT</div>
+        <div class="text hint" style="left: 43.4px; top: 162.15px; font-size: 12px; line-height: 14px">{{ keyMoveUp }}</div>
+        <div class="text muted" style="left: 148.8px; top: 162.15px; font-size: 12px; line-height: 14px">MOVE THE PANEL UP</div>
+        <div class="text hint" style="left: 43.4px; top: 185.64px; font-size: 12px; line-height: 14px">{{ keyMoveDown }}</div>
+        <div class="text muted" style="left: 148.8px; top: 185.64px; font-size: 12px; line-height: 14px">MOVE THE PANEL DOWN</div>
+        <div class="text hint" style="left: 43.4px; top: 209.16px; font-size: 12px; line-height: 14px">{{ keyInfo }}</div>
+        <div class="text muted" style="left: 148.8px; top: 209.16px; font-size: 12px; line-height: 14px">{{ infoAction }}</div>
+        <div class="text hint" style="left: 43.4px; top: 232.65px; font-size: 12px; line-height: 14px">{{ keyMirror }}</div>
+        <div class="text muted" style="left: 148.8px; top: 232.65px; font-size: 12px; line-height: 14px">MOVE THE PANEL TO THE OTHER SIDE</div>
+        <div class="text hint" style="left: 43.4px; top: 256.14px; font-size: 12px; line-height: 14px">{{ keyReset }}</div>
+        <div class="text muted" style="left: 148.8px; top: 256.14px; font-size: 12px; line-height: 14px">PUT THE PANEL BACK WHERE IT STARTED</div>
+        <div class="text hint" style="left: 43.4px; top: 279.66px; font-size: 12px; line-height: 14px">{{ keySettings }}</div>
+        <div class="text muted" style="left: 148.8px; top: 279.66px; font-size: 12px; line-height: 14px">CLOSE THIS PANEL</div>
+    </div>
+</body>
+</rml>

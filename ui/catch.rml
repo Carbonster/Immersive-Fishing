@@ -1,0 +1,105 @@
+<rml>
+<head>
+    <title>Fishing: catch</title>
+    <link type="text/rcss" href="fishing.rcss"/>
+    <link type="text/rcss" href="catch.rcss"/>
+</head>
+<body data-model="fishing">
+    <div class="panel"
+         data-style-left="anchor == 'left' ? insetX + 'px' : 'auto'"
+         data-style-right="anchor == 'right' ? insetX + 'px' : 'auto'"
+         data-style-margin-top="(insetY - 360) + 'px'">
+
+        <div class="row">
+            <div class="ticks" data-visible="show_ticks">
+                <div class="tick major"/><div class="tick"/><div class="tick"/><div class="tick"/><div class="tick"/>
+                <div class="tick major"/><div class="tick"/><div class="tick"/><div class="tick"/><div class="tick"/>
+                <div class="tick major"/><div class="tick"/><div class="tick"/><div class="tick"/><div class="tick"/>
+                <div class="tick major"/><div class="tick"/><div class="tick"/><div class="tick"/><div class="tick"/>
+                <div class="tick major"/>
+            </div>
+
+            <div class="track" data-visible="show_catchbar">
+                <svg class="track-fill" width="104" height="540" viewBox="0 0 104 540">
+                    <defs>
+                        <linearGradient id="track" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="rgb(5,6,5)" stop-opacity="0.62"/>
+                            <stop offset="0.5" stop-color="rgb(5,6,5)" stop-opacity="0.42"/>
+                            <stop offset="1" stop-color="rgb(5,6,5)" stop-opacity="0.62"/>
+                        </linearGradient>
+                    </defs>
+                    <polygon points="8,0 96,0 104,8 104,532 96,540 8,540 0,532 0,8" fill="url(#track)"/>
+                </svg>
+                <div class="puck-clip">
+                <div class="puck" data-class-in="inside"
+                     data-style-top="(barY * 540 - barH * 270) + 'px'"
+                     data-style-height="(barH * 540) + 'px'">
+                    <svg class="puck-edge" width="9" height="14" viewBox="0 0 9 14">
+                        <polygon points="0,0 9,7 0,14" fill="#6EEBF0"/>
+                    </svg>
+                    <svg class="puck-edge right" width="9" height="14" viewBox="0 0 9 14">
+                        <polygon points="9,0 9,14 0,7" fill="#6EEBF0"/>
+                    </svg>
+                </div>
+                </div>
+            </div>
+
+            <div class="success" data-visible="show_progress">
+                <div class="success-fill" data-class-in="inside"
+                     data-style-height="(progress * 540) + 'px'"/>
+            </div>
+
+            <div class="info" data-visible="show_info">
+                <div class="info-top">
+                    <div class="kicker" data-if="show_title"><span class="slashes">//</span><span>CATCH SCANNER</span></div>
+                    <div class="name" data-if="show_fishname">{{ fishName }}</div>
+                    <div class="rarity" data-if="show_rarity">{{ rarity }}</div>
+                </div>
+                <div class="info-bottom">
+                    <div class="stat" data-if="show_difficulty">
+                        <div class="stat-label">DIFFICULTY</div>
+                        <div class="stat-value difficulty">{{ difficulty }}</div>
+                    </div>
+                    <div class="divider" data-if="show_rule"/>
+                    <div class="stat" data-if="show_depth">
+                        <div class="stat-label">DEPTH</div>
+                        <div class="stat-value">Unknown</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hint-row" data-visible="show_hint">
+            <div class="hint" data-if="pad">
+                <svg class="pad-icon" width="20" height="20" viewBox="0 0 28 28">
+                    <circle cx="14" cy="5" r="4.2" fill="none" stroke="#fff" stroke-width="1.8"/>
+                    <circle cx="5" cy="14" r="4.2" fill="none" stroke="#fff" stroke-width="1.8"/>
+                    <circle cx="23" cy="14" r="4.2" fill="none" stroke="#fff" stroke-width="1.8"/>
+                    <circle cx="14" cy="23" r="4.4" fill="#3F8BEA" stroke="#fff" stroke-width="1.4"/>
+                </svg>
+                <span>HOLD THE LINE</span>
+            </div>
+            <div class="hint" data-if="!pad">
+                <svg class="space-icon" width="24" height="12" viewBox="0 0 24 12">
+                    <rect x="0.9" y="0.9" width="22.2" height="10.2" rx="2.5" fill="none" stroke="#fff" stroke-width="1.8"/>
+                    <path d="M7 5 V7.6 H17 V5" fill="none" stroke="#fff" stroke-width="1.4"/>
+                </svg>
+                <span>HOLD THE LINE</span>
+            </div>
+        </div>
+
+        <img class="fish" data-visible="show_fish" data-class-in="inside" src="../images/fish.png"
+             data-style-top="(8 + fishY * 540) + 'px'"/>
+
+        <svg class="frame" data-visible="show_catchbar" width="128" height="564" viewBox="0 0 128 564">
+            <path d="M20 12 H108 L116 20 V544 L108 552 H20 L12 544 V20 Z" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+            <path d="M24 36 L32 26 H96 L104 36" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+            <path d="M24 528 L32 538 H96 L104 528" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+            <polygon points="9,9 0,6 6,0" fill="rgba(255,255,255,0.8)"/>
+            <polygon points="119,9 128,6 122,0" fill="rgba(255,255,255,0.8)"/>
+            <polygon points="9,555 0,558 6,564" fill="rgba(255,255,255,0.8)"/>
+            <polygon points="119,555 128,558 122,564" fill="rgba(255,255,255,0.8)"/>
+        </svg>
+    </div>
+</body>
+</rml>

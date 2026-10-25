@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "groups": {
+    "title": true,
+    "fishname": true,
+    "rarity": true,
+    "ticks": true,
+    "catchbar": true,
+    "fish": true,
+    "progress": true,
+    "hint": true,
+    "depth": true,
+    "difficulty": true
+  }
+}
