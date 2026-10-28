@@ -29,6 +29,8 @@ import re
 import sys
 import threading
 import time
+from ctypes import c_float, c_uint64
+from typing import Annotated
 
 from nmspy.common import gameData
 from nmspy.data import types as nms
@@ -36,7 +38,7 @@ from nmspy.data.audiokinetic import AK
 from nmspy.data.enums.external_enums import cGcAudioWwiseEvents
 from nmspy.globals import globals as nms_globals
 from pymhf import Mod
-from pymhf.core.hooking import on_key_pressed
+from pymhf.core.hooking import on_key_pressed, static_function_hook
 from pymhf.core.memutils import get_addressof, map_struct
 
 logger = logging.getLogger(__name__)
@@ -742,13 +744,35 @@ def controller_push_down():
     return bool(_oreo_session and _oreo_session.controller.is_pressed(PAD_PUSH_BUTTON))
 
 
+# TEMPORARY, for NMS build 183791: NMSpy has no working pattern for cGcPlayer::Update yet, and its
+# cGcApplication.Data.mSimulation and cGcSimulation.mPlayer offsets are stale. With this on, the
+# hook is ours and the fish manager is found from the player it hands over. When NMSpy catches up,
+# set it to False - or delete this block, `PLAYER_TO_FISH_MANAGER`, the `if OWN_UPDATE_HOOK`
+# branches below and `_player_addr` - and NMSpy's own chain takes over.
+OWN_UPDATE_HOOK = True
+PLAYER_TO_FISH_MANAGER = 0x25D5E0 - 0x25F860
+_player_addr = 0
+
+
+@static_function_hook(
+    "48 8B C4 F3 0F 11 48 10 55 53 56 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 44 0F 29 A0"
+)
+def player_update(this: c_uint64, lfStep: Annotated[float, c_float]): ...
+
+
 def current_fish():
     # The fish on the hook right now, or None. NMSpy walks the chain for us:
     # cGcApplication -> Data -> mSimulation -> mFishManager -> mCurrentFish.
-    simulation = gameData.simulation
-    if simulation is None:
-        return None
-    fish = simulation.mFishManager.mCurrentFish
+    if OWN_UPDATE_HOOK:
+        if not _player_addr:
+            return None
+        manager = map_struct(_player_addr + PLAYER_TO_FISH_MANAGER, nms.cGcFishManager)
+    else:
+        simulation = gameData.simulation
+        if simulation is None:
+            return None
+        manager = simulation.mFishManager
+    fish = manager.mCurrentFish
     if not fish:
         return None
     return fish.contents
@@ -841,6 +865,10 @@ class FishingMinigameMod(Mod):
         self._demo_progress = 0.0
         self._runtime_attempted = False
         self._runtime_disabled = False
+        self.ticks = 0
+        watchdog = threading.Timer(90.0, self._watchdog)
+        watchdog.daemon = True
+        watchdog.start()
         self.armed = False
         self.in_chase = False
         self.laser = None          # cGcFishLaser for the current attempt (from OnModeChanged)
@@ -1284,8 +1312,26 @@ class FishingMinigameMod(Mod):
         self.ui.show("catch")
         self.ui.flush()
 
-    @nms.cGcPlayer.Update.after
-    def on_update(self, this, lfStep):
+    if OWN_UPDATE_HOOK:
+        @player_update.after
+        def on_update(self, this, lfStep):
+            global _player_addr
+            _player_addr = int(this)
+            self._tick(lfStep)
+    else:
+        @nms.cGcPlayer.Update.after
+        def on_update(self, this, lfStep):
+            self._tick(lfStep)
+
+    def _watchdog(self):
+        if not self.ticks:
+            logger.error("cGcPlayer::Update has not been called in 90 s. If a save is loaded, the "
+                         "signature no longer matches this game build - see framework.log")
+
+    def _tick(self, lfStep):
+        if not self.ticks:
+            logger.info(f"cGcPlayer::Update hook is live ({'own signature' if OWN_UPDATE_HOOK else 'NMSpy'})")
+        self.ticks += 1
         if not self._ensure_runtime():
             return
 
